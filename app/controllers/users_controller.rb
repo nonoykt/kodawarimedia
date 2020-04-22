@@ -17,9 +17,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
-      redirect_to @user, notice: "user saved"
+      log_in @user
+      redirect_to @user, notice: "ユーザー登録が完了しました"
     else
       render :new
     end
@@ -30,6 +30,8 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user.destroy
+    redirect_to users_path
   end
 
   private
@@ -39,6 +41,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.requier(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
