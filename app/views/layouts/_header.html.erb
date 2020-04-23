@@ -6,11 +6,14 @@
           <%= link_to image_tag('kodawarimedia-1.jpeg', height: 50), root_path, class: "logo-text" %>
         </div>
       </a>
+
       <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
         <span class="navabar-toggler-icon"></span>
       </button>
+
       <div id="menu" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
+          
           <% if logged_in? %>
             <li class="nav-itme nav-item-extend">
               <%= link_to "kodawarimedia", users_path, class: "btn btn-info btn-md btn-extend" %>
@@ -29,6 +32,7 @@
               <%= link_to "Login", login_path, class: "btn btn-info btn-md btn-extend btn-login-extend" %>
             </li>
           <% end %>
+
         </ul>
       </div>
     </nav>
