@@ -1,39 +1,65 @@
 require 'rails_helper'
 
 RSpec.describe "UsersLogins", type: :request do
+  include Sessionshelper
 
   let(:user) { create(:user) }
+
+  def post_invalid_information
+    post login_path, params: {
+      session: {
+        email: "",
+        password: ""
+      }
+    }
+  end
+
+  def post_valid_information(remember_me = 0)
+    post login_path, params: {
+      session: {
+        email: user.email,
+        password: user.password
+        remember_me: remember_me
+      }
+    }
+  end
 
   describe "GET /login" do
     context "invalid information" do
       it "fails having a danger flash message" do
         get login_path
-        post login_path, params: {
-          session: {
-            email: "",
-            password: ""
-          }
-        }
+        post_invalid_information
         expect(flash[:danger]).to be_truthy
         expect(is_logged_in?).to be_falsey
       end
     end
 
     context "valid infomation" do
-      # <--login/remember_me-->
-      def post_valid_infomation(remember_me = 0)
-        post login_path, params: {
-          session: {
-            emmail: user.email,
-            password: user.password,
-            remember_me: remember_me
-          }
-        }
+      it "succeeds having no danger flash message" do
+        get login_path
+        post_valid_information
+        expect(flash[:danger]).to be_falsey
+        expect(is_logged_in?).to be_truthy
+        follow_redirect!
+        expect(request.fullpath).to eq '/users/1'
+      end
+
+      it "succeeds login and logout" do
+        get login_path
+        post_valid_information
+        expect(flash[:danger]).to be_falsey
+        expect(is_logged_in?).to be_truthy
+        follow_redirect!
+        expect(request.fullpath).to eq '/users/1'
+        delete logout_path
+        expect(is_logged_in?).to be_falsey
+        follow_redirect!
+        expect(request.fullpath).to eq '/'
       end
 
       it "does not log out twice" do
         get login_path
-        post_valid_information(0)
+        post_valid_information
         expect(is_logged_in?).to be_truthy
         follow_redirect!
         expect(request.fullpath).to eq '/users/1'
@@ -48,9 +74,9 @@ RSpec.describe "UsersLogins", type: :request do
 
       it "succeeds remember_token because of check remember_me" do
         get login_path
-        post_valid_information(1)
+        post_valid_information(0)
         expect(is_logged_in?).to be_truthy
-        expect(cookies[:remember_token]).not_to be_nil
+        expect(cookies[:remember_token]).not_to be_empty
       end
 
       it "has no remember_token because of check remember_me" do
@@ -68,32 +94,6 @@ RSpec.describe "UsersLogins", type: :request do
         delete logout_path
         expect(is_logged_in?).to be_falsey
         expect(cookies[:remember_token]).to be_empty
-      end
-
-      # <--login/base-->
-      it "succeeds having no danger flash message" do
-        get login_path
-        post login_path, params: {
-          session: {
-            email: user.email,
-            password: user.password
-          }
-        }
-        expect(flash[:danger]).to be_falsey
-        expect(is_logged_in?).to be_truthy
-      end
-
-      it "succeeds login and logout" do
-        get login_path
-        post login_path, params: {
-          session: {
-            email: user.email,
-            password: user.password
-          }
-        }
-        expect(is_logged_in?).to be_truthy
-        delete logout_path
-        expect(is_logged_in?).to be_falsey
       end
     end
   end
