@@ -8,8 +8,8 @@ RSpec.describe "UsersSignups", type: :request do
         post signup_path, params: {
           user: {
             name: "",
-            email: "user@invalid"
-            password: "foo"
+            email: "user@invalid",
+            password: "foo",
             password_confirmation: "bar"
           }
         }
@@ -27,7 +27,7 @@ RSpec.describe "UsersSignups", type: :request do
             password_confirmation: "password"
           }
         }
-      }.to change(User, :count).be(1)
+      }.to change(User, :count).by(1)
     end
   end
 end

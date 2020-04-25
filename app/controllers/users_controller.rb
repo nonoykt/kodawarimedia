@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :logged_in_user, only: [:show, :edit, :update]
+  before_action :correct_user, only: [:show, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy ]
 
   def index
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
+      @user.send_activation_email
       redirect_to @user, notice: "ユーザー登録が完了しました"
     else
       render :new
@@ -26,7 +28,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params)
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(user_params)
+      # success
+      flash[:success] = "プロフィールの更新に成功しました"
+      redirect_to @user
+    else
+      # failure
+      flash.now[:danger] = "プロフィールの編集に失敗しました"
+      render :edit
+    end
   end
 
   def destroy
@@ -42,5 +54,18 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  end
+
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:warning] = "ログインをしてください"
+      redirect_to login_url
+    end
+  end
+
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
   end
 end

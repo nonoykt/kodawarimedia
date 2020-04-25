@@ -1,0 +1,5 @@
+<%= @user.name %>さんへ
+
+kodawarimediaをご利用いただき誠に有難うございます。
+下記のリンクをクリックしていただきアカウントの認証となります。
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>

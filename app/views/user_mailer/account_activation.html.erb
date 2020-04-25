@@ -1,0 +1,6 @@
+<h1>kodawarimedia</h1>
+
+<p><%= @user.name %>さんへ</p>
+<p>kodawarimediaをご利用いただき誠に有難うございます。</p>
+<p>下記のリンクをクリックしていただきアカウントの認証となります。</p>
+<%= link_to "認証する", edit_account_activation_url(@user.activation_token, email: @user.email) %>

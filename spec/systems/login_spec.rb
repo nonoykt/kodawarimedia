@@ -2,18 +2,18 @@ require 'rails_helper'
 
 RSpec.describe "Logins", type: :system do
 
-  let(:user) { create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   def submit_with_invalid_information
-    fill_in 'メールアドレス', with: ''
-    fill_in 'パスワード', with: ''
+    fill_in "メールアドレス", with: ''
+    fill_in "パスワード", with: ''
     find(".form-submit").click
   end
 
   def submit_with_valid_information(remember_me = 0)
-    fill_in 'メールアドレス', with: user.email
-    fill_in 'パスワード', with: user.password
-    check 'session_remember_me' if remember_me == 1
+    fill_in "メールアドレス", with: user.email
+    fill_in "パスワード", with: user.password
+    check "session_remember_me" if remember_me == 1
     find(".form-submit").click
   end
 

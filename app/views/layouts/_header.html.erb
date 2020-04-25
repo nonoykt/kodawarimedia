@@ -13,16 +13,19 @@
 
       <div id="menu" class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
-          
+
           <% if logged_in? %>
             <li class="nav-itme nav-item-extend">
               <%= link_to "kodawarimedia", users_path, class: "btn btn-info btn-md btn-extend" %>
             </li>
             <li class="nav-itme nav-item-extend">
-              <%= link_to "kodawari profile", current_user, class: "btn btn-secondary btn-md btn-extend" %>
+              <%= link_to "kodawari profile", user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
             </li>
             <li class="nav-itme nav-item-extend">
-              <%= link_to "Logout", root_path, method: :delete, class: "btn btn-danger btn-md btn-extend btn-logout-extend" %>
+              <%= link_to "EDIT profile", edit_user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
+            </li>
+            <li class="nav-itme nav-item-extend">
+              <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-md btn-extend btn-logout-extend" %>
             </li>
           <% else %>
             <li class="nav-itme nav-item-extend">

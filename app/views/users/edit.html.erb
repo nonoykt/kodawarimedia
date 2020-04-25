@@ -1,2 +1,35 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% provide(:title, "EDIT PROFILE") %>
+<div class="container edit-container">
+  <div class="edit-title">
+    <%= image_tag 'edit.jpeg', class: 'edit-img' %>
+    <h1 class="form-title form-title-edit">プロフィール編集</h1>
+  </div>
+
+  <%= form_with(model: @user, url: user_path(@user), local: true) do |form| %>
+  <div class="card-deck">
+    <div class="col-md-6">
+      <section calss="card">
+        <h2 calss="card-header form-title">アカウント情報変更</h2>
+        <div class="card-body">
+          <%= render 'shared/error_messages' %>
+          <div class="form-group">
+            <%= form.text_field :name, class: 'form-control', placeholder: '名前' %>
+          </div>
+          <div class="form-group">
+            <%= form.email_field :email, class: 'form-control', placeholder: 'メールアドレス' %>
+          </div>
+          <div class="form-group">
+            <%= form.password_field :password, class: 'form-control', placeholder: 'パスワード' %>
+          </div>
+          <div class="form-group">
+            <%= form.password_field :password_confirmation, class: 'form-control', placeholder: 'パスワード（確認）' %>
+          </div>
+          <div class="form-group">
+            <%= form.submit "変更", class: 'btn btn-info btn-lg form-submit' %>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <% end %>
+</div>
