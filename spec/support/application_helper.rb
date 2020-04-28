@@ -13,6 +13,5 @@ module ApplicationHelpers
         remember_me: remember_me
       }
     }
-    expect(response).to redirect_to '/users/1'
   end
 end

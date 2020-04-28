@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe "UsersLogins", type: :request do
   include SessionsHelper
 
-  let(:user) { FactoryBot.create(:user) }
-  let(:no_activation_user) { FactorBot.create(:no_activation_user) }
+  let(:user) { create(:user) }
+  let(:no_activation_user) { create(:no_activation_user) }
 
   def post_invalid_information
     post login_path, params: {

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "Logins", type: :system do
 
-  let(:user) { FactoryBot.create(:user) }
+  let(:user) { create(:user) }
 
   def submit_with_invalid_information
     fill_in "メールアドレス", with: ''
