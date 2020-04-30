@@ -3,10 +3,10 @@
   <div class="row">
     <div class="col">
       <div class="form-logo-img">
-        <%= link_to imaga_tag('kodawarimedia-1.jpeg', width: 100), root_path, class: "logo-img" %>
+        <%= link_to image_tag('kodawarimedia-1.jpeg', width: 100), root_path, class: "logo-img" %>
       </div>
       <h1 class="form-title">パスワード再設定</h1>
-      <%= form_with(scope: :password_reset, url: password_reset_path, local: true) do |form| %>
+      <%= form_with(scope: :password_reset, url: password_resets_path, local: true) do |form| %>
       <div class="form-group">
         <%= form.email_field :email, class: 'form-control', placeholder: "メールアドレス" %>
       </div>
@@ -15,7 +15,7 @@
       </div>
       <% end %>
       <p class="form-go-to-signup-or-login">
-        新しいユーザー作成またはログイン<%= link_to login_path %>
+        新しいユーザー作成またはログイン<%= link_to "こちら",login_path %>
       </p>
     </div>
   </div>

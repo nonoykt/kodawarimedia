@@ -100,3 +100,54 @@ body {
 .form-submit {
   width: 100%;
 }
+
+
+// <-- micropost -->
+
+.microposts {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid $kodawarimedia-black;
+  }
+  .micropost-list {
+
+  }
+  .micropost-user {
+    margin-top: 5rem;
+    padding-top: 0;
+  }
+  .micropost-content {
+    display: block;
+    margin-left: 10px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .micropost-timestamp {
+    color: $kodawarimedia-dark-blue;
+    display: block;
+    margin-left: 200px;
+  }
+}
+
+// <-- paginate -->
+
+.pagination {
+  margin-top: 1.6rem;
+
+  .page-item {
+    .page-link {
+      background-color: $kodawarimedia-light-white;
+      border: 1px solid $kodawarimedia-light-white;
+      color: $kodawarimedia-green;
+    }
+  }
+  .page-item.active .page-link {
+    background-color: $kodawarimedia-green;
+    border-color: $kodawarimedia-green;
+    color: $kodawarimedia-light-white;
+  }
+}

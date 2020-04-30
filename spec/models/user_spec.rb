@@ -100,6 +100,7 @@ RSpec.describe User, type: :model do
     end
   end
 
+# <--password-->
   describe "password and password_confirmation" do
     it "should be present (nonblank) " do
       user.password = user.password_confirmation = " " * 6
@@ -126,6 +127,13 @@ RSpec.describe User, type: :model do
       it "return false for a user with nil digest" do
         expect(user.authenticated?(:remember, '')).to be_falsey
       end
+    end
+  end
+
+  describe "micropost" do
+    it "destroys associated microposts" do
+      user.microposts.created!(content: "Lorem Ipsum")
+      expect{ user.destroy }.to change{ Micropost.count }.by(-1)
     end
   end
 end
