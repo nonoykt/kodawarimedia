@@ -7,7 +7,7 @@ class Micropost < ApplicationRecord
   #validates :validate_picture
 
   def resize_picture
-    return self.picture.variant(resize: '200x200').processed
+    return self.picture.variant(resize: '100x100').processed
   end
 
   private

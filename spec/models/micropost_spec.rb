@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Micropost, type: :model do
 
   let(:user) { create(:user) }
-  let(:micropost) { user.micropost.build(content: "Lorem ipsum", user_id: user.id) }
+  let(:micropost) { user.microposts.build(content: "Lorem ipsum", user_id: user.id) }
 
   describe "Micropost" do
     it "should be valid" do

@@ -25,14 +25,14 @@ $kodawarimedia-green: #009d00;
 $kodawarimedia-dark-blue: #132e57;
 
 body {
-  background-color: $kodawarimedia-dark-white;
+  background-color: $kodawarimedia-light-white;
 }
 
 // header
 
 .navbar-extend {
   margin-bottom: 0;
-  background-color: $kodawarimedia-blue;
+  background-color: $kodawarimedia-green;
   opacity: 0.6;
   ul li a button {
     padding: 0.375rem 1.5rem;

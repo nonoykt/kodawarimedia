@@ -20,6 +20,9 @@
             <li class="nav-itme nav-item-extend">
               <%= link_to "kodawari profile", user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
             </li>
+            <li class="nav-item nav-item-extend">
+              <%= link_to "Post", new_micropost_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
+            </li>
             <li class="nav-itme nav-item-extend">
               <%= link_to "EDIT profile", edit_user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
             </li>

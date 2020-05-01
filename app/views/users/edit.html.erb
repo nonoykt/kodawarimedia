@@ -11,7 +11,7 @@
       <section calss="card">
         <h2 calss="card-header form-title">アカウント情報変更</h2>
         <div class="card-body">
-          <%= render 'shared/error_messages' %>
+          <%= render 'shared/error_messages', object: form.object %>
           <div class="form-group">
             <%= form.text_field :name, class: 'form-control', placeholder: '名前' %>
           </div>
