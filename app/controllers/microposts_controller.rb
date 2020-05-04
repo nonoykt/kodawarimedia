@@ -4,11 +4,12 @@ class MicropostsController < ApplicationController
 
   def create
     @user = current_user
-    @micropost = currnet_user.microposts.build(micropost_params)
+    @micropost = current_user.microposts.build(micropost_params)
 
     if @micropost.save
       redirect_to root_url, notice: "投稿しました"
     else
+      @feed_items = []
       render current_user
     end
   end
@@ -36,7 +37,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     flash[:success] = "ポストが削除されました"
-    redirect_to current_user
+    redirect_to request.refferer || root_url
   end
 
   private

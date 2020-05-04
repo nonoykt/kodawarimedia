@@ -8,9 +8,27 @@
       figure
     </div>
   </div>
+  <section class="stats">
+    <%= render 'shared/stats'%>
+  </section>
+  <div class="col-md-8">
+    <%= render 'follow_form' if logged_in? %>
+  </div>
   <div class="row">
     <div class="col bg-warning">
-      <%= render 'layouts/micropost' %>
+      <h1 class="micropost-title col-2">posts</h1>
+      <% if @user.microposts.any? %>
+        <div class="container">
+          <ol class="microposts">
+            <%= @microposts.each do |micropost| %>
+              <%= render @microposts %>
+            <% end %>
+          </ol>
+        </div>
+        <%= paginate @microposts %>
+      <% else %>
+        <span>まだ投稿がありません</span>
+      <% end %>
     </div>
   </div>
 </div>

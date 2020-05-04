@@ -3,7 +3,7 @@
     <nav class="navbar nabvar-expand-sm navbar-dark fixed-top navbar-extend">
       <a class="navbar-brand" href="#">
         <div class="navbar-brand-extend">
-          <%= link_to image_tag('kodawarimedia-1.jpeg', height: 50), root_path, class: "logo-text" %>
+          <%= link_to image_tag('kodawarimedia-1.jpeg', height: 30), root_path, class: "logo-text" %>
         </div>
       </a>
 
@@ -15,13 +15,10 @@
         <ul class="navbar-nav ml-auto">
           <% if logged_in? %>
             <li class="nav-itme nav-item-extend">
-              <%= link_to "kodawarimedia", users_path, class: "btn btn-info btn-md btn-extend" %>
+              <%= link_to "kodawarimedia", root_url, class: "btn btn-info btn-md btn-extend" %>
             </li>
             <li class="nav-itme nav-item-extend">
               <%= link_to "kodawari profile", user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
-            </li>
-            <li class="nav-item nav-item-extend">
-              <%= link_to "Post", new_micropost_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
             </li>
             <li class="nav-itme nav-item-extend">
               <%= link_to "EDIT profile", edit_user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>

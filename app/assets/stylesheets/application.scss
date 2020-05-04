@@ -96,6 +96,25 @@ body {
   color: $kodawarimedia-dark-white;
 }
 
+// <--sidebar-->
+
+@media screen and (max-width: 480px) {
+  aside {
+    width: 100%;
+  }
+  .pc_only {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
 // <-- form -->
 .form-submit {
   width: 100%;
@@ -150,4 +169,8 @@ body {
     border-color: $kodawarimedia-green;
     color: $kodawarimedia-light-white;
   }
+}
+// <--follow_stats-->
+.users.follow {
+  padding: 0;
 }
