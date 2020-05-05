@@ -58,18 +58,22 @@ body {
     margin-top: 0.6rem;
   }
 }
+// <--header_title_logo-->
 
-// <--header-->
+// <--header_sub_menu-->
+
+// <--header_main_menu-->
 .nav ul {
   display: table;
   margin: 0 auto;
   padding: 0;
-  width: 80%;
+  width: 60%;
   text-align: center;
 }
 .nav li {
   display: table-cell;
   min-width: 50px;
+  border-bottom: 0.1px solid $kodawarimedia-black;
 }
 .nav a {
   display: block;
@@ -79,17 +83,14 @@ body {
   padding-bottom: 5px;
 }
 .nav li.current {
-  border-bottom: 3px solid $kodawarimedia-yellow;
+  border-bottom: 3px solid $kodawarimedia-red;
 }
 .nav li:hover {
   color: $kodawarimedia-blue;
   border-bottom: 3px solid $kodawarimedia-green;
 }
-// <--main-->
 
-
-// <--sidebar-->
-
+// <--container_columns-->
 @media screen and (max-width: 480px) {
   aside {
     width: 100%;
@@ -98,11 +99,6 @@ body {
     display: none;
   }
 }
-
-
-
-
-
 
 
 
@@ -119,15 +115,13 @@ body {
   list-style: none;
   padding: 0;
   li {
-    padding: 10px 0;
+    padding: 10px 10px;
     border-top: 1px solid $kodawarimedia-black;
-  }
-  .micropost-list {
-
   }
   .micropost-user {
     margin-top: 5rem;
     padding-top: 0;
+    margin-left: 10px;
   }
   .micropost-content {
     display: block;

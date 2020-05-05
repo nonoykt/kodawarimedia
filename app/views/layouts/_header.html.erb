@@ -1,39 +1,37 @@
 <header>
-  <div class="logo-container">
-    <li><%= link_to "kodawarimedia", root_url %></li>
-  </div>
-
-  <div class="side-header-dropdown">
-    <div class="side-header__box__menu" id="dropdownMenuButton button-group">
-      <%= icon 'fas', 'fa-user-cog' %>
+  <div class="navbarTop">
+    <div class="siteLogo">
+      <h1><%= link_to "kodawari", root_url %></h1>
     </div>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-      <% if logged_in? %>
-        <%= link_to "プロフィール", user_path(current_user) %>
-        <%= link_to "プロフフィール編集", edit_user_path(current_user) %>
-        <div class="dropdown-divider"></div>
-        <%= link_to "ログアウト", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to "新しくはじめる", signup_path %>
-        <%= link_to "ログイン", login_path %>
-      <% end %>
-    </div>
-  </div>
-
-  <div class="nav-container">
-    <div class="nav">
-      <ul>
-        <li><%= link_to "kodawarimedia", root_url %></li>
+    <div class="navbarTop_nav dropdown">
+      <button class="nav-link header_sub_menu_item" id="dropdownMenuButton button-group" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-user-cog"></i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <% if logged_in? %>
-          <li><%= link_to "プロフィール", user_path(current_user) %></li>
-          <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
-          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+          <%= link_to "プロフィール", user_path(current_user), class: 'nav-link dropdown-item' %>
+          <%= link_to "プロフフィール編集", edit_user_path(current_user), class:'nav-link dropdown-item' %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "ログアウト", logout_path, method: :delete, class:'nav-link dropdown-item' %>
         <% else %>
-          <li><%= link_to "新しくはじめる", signup_path %></li>
-          <li><%= link_to "ログイン", login_path %></li>
+          <%= link_to "新しくはじめる", signup_path, class:'nav-link dropdown-item' %>
+          <%= link_to "ログイン", login_path, class:'nav-link dropdown-item' %>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 
+  <div class="navbarMenu nav">
+    <ul>
+      <li><%= link_to "ホーム", root_url %></li>
+      <% if logged_in? %>
+        <li><%= link_to "プロフィール", user_path(current_user) %></li>
+        <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+        <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "新しくはじめる", signup_path %></li>
+        <li><%= link_to "ログイン", login_path %></li>
+      <% end %>
+    </ul>
+  </div>
 </header>

@@ -1,14 +1,17 @@
 <li id="micropost-<%= micropost.id %>">
-  <span class="micropost-list">
-    <span class="micropost-user"><%= link_to micropost.user.name, micropost.user %></span>
-    <span class="micropost-content"><%= micropost.content %></span>
-    <% if micropost.picture.attached? %>
-      <div class="micropost-picture">
-        <%= image_tag micropost.resize_picture %>
-      </div>
-    <% end %>
-    <span class="micropost-timestamp">
-      <%= time_ago_in_words(micropost.created_at) %>
-    </span>
-  </span>
 </li>
+
+<div class="card" style="width: 18rem;">
+  <% if micropost.picture.attached? %>
+    <img class="card-img-top" src= micropost.resize_picture alt="#">
+    <%= image_tag micropost.resize_picture %>
+  <% end %>
+  <div class="card-body">
+    <h5 class="card-title">sample title</h5>
+    <p class="micropost-user"><%= link_to micropost.user.name, micropost.user %></p>
+    <p class="micropost-content"><%= micropost.content %></p>
+    <p class="micropost-timestamp">
+      <%= time_ago_in_words(micropost.created_at) %>
+    </p>
+  </div>
+</div>
