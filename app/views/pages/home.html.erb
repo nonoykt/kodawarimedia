@@ -15,26 +15,20 @@
           <%= render 'shared/feed' %>
         </div>
         <aside class="col-md-4">
-          <section class="user_info pc_only">
+          <div class="user_info pc_only">
             <%= render 'shared/user_info' %>
-          </section>
-        </aside>
-        <aside class="col-md-4">
-          <section class="stats pc_only">
+          </div>
+          <div class="stats pc_only">
             <%= render 'shared/stats' %>
-          </section>
-        </aside>
-        <aside class="col-md-4">
-          <section class="micropost_form pc_only">
+          </div>
+          <div class="micropost_form pc_only">
             <%= render 'shared/micropost_form' %>
-          </section>
+          </div>
         </aside>
       </div>
     <% else %>
       <div class="col-md-8">
-        <%= @microposts.each do |micropost| %>
-          <%= render 'microposts/micropost' %>
-        <% end %>
+        <%= render @microposts %>
       </div>
     <% end %>
   </div>

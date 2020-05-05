@@ -132,7 +132,7 @@ RSpec.describe User, type: :model do
 
   describe "micropost" do
     it "destroys associated microposts" do
-      user.microposts.created!(content: "Lorem Ipsum")
+      user.microposts.create!(content: "Lorem Ipsum")
       expect{ user.destroy }.to change{ Micropost.count }.by(-1)
     end
   end

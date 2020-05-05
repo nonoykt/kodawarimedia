@@ -13,7 +13,7 @@ RSpec.describe Micropost, type: :model do
     it "should not be valid" do
       micropost.update_attributes(content: "  ", picture: nil, user_id: user.id)
       expect(micropost).to be_valid
-      micropost.update_attibutes(content: " ", picture: nil, user_id: user.id)
+      micropost.update_attributes(content: " ", picture: nil, user_id: user.id)
       expect(micropost).to be_invalid
     end
 

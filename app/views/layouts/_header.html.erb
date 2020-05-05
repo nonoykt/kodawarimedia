@@ -1,41 +1,39 @@
 <header>
-  <div class="container">
-    <nav class="navbar nabvar-expand-sm navbar-dark fixed-top navbar-extend">
-      <a class="navbar-brand" href="#">
-        <div class="navbar-brand-extend">
-          <%= link_to image_tag('kodawarimedia-1.jpeg', height: 30), root_path, class: "logo-text" %>
-        </div>
-      </a>
-
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#menu">
-        <span class="navabar-toggler-icon"></span>
-      </button>
-
-      <div id="menu" class="collapse navbar-collapse">
-        <ul class="navbar-nav ml-auto">
-          <% if logged_in? %>
-            <li class="nav-itme nav-item-extend">
-              <%= link_to "kodawarimedia", root_url, class: "btn btn-info btn-md btn-extend" %>
-            </li>
-            <li class="nav-itme nav-item-extend">
-              <%= link_to "kodawari profile", user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
-            </li>
-            <li class="nav-itme nav-item-extend">
-              <%= link_to "EDIT profile", edit_user_path(current_user), class: "btn btn-secondary btn-md btn-extend" %>
-            </li>
-            <li class="nav-itme nav-item-extend">
-              <%= link_to "Logout", logout_path, method: :delete, class: "btn btn-danger btn-md btn-extend btn-logout-extend" %>
-            </li>
-          <% else %>
-            <li class="nav-itme nav-item-extend">
-              <%= link_to "新しくはじめる", signup_path, class: "btn btn-info btn-md btn-extend" %>
-            </li>
-            <li class="nav-itme nav-item-extend">
-              <%= link_to "Login", login_path, class: "btn btn-info btn-md btn-extend btn-login-extend" %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
+  <div class="logo-container">
+    <li><%= link_to "kodawarimedia", root_url %></li>
   </div>
+
+  <div class="side-header-dropdown">
+    <div class="side-header__box__menu" id="dropdownMenuButton button-group">
+      <%= icon 'fas', 'fa-user-cog' %>
+    </div>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+      <% if logged_in? %>
+        <%= link_to "プロフィール", user_path(current_user) %>
+        <%= link_to "プロフフィール編集", edit_user_path(current_user) %>
+        <div class="dropdown-divider"></div>
+        <%= link_to "ログアウト", logout_path, method: :delete %>
+      <% else %>
+        <%= link_to "新しくはじめる", signup_path %>
+        <%= link_to "ログイン", login_path %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="nav-container">
+    <div class="nav">
+      <ul>
+        <li><%= link_to "kodawarimedia", root_url %></li>
+        <% if logged_in? %>
+          <li><%= link_to "プロフィール", user_path(current_user) %></li>
+          <li><%= link_to "プロフィール編集", edit_user_path(current_user) %></li>
+          <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "新しくはじめる", signup_path %></li>
+          <li><%= link_to "ログイン", login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
 </header>
