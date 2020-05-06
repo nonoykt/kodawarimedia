@@ -3,8 +3,7 @@
 
 <div class="card" style="width: 18rem;">
   <% if micropost.picture.attached? %>
-    <img class="card-img-top" src= micropost.resize_picture alt="#">
-    <%= image_tag micropost.resize_picture %>
+    <img class="card-img-top" src="<%= micropost.resize_picture %>" alt="#">
   <% end %>
   <div class="card-body">
     <h5 class="card-title">sample title</h5>

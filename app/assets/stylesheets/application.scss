@@ -16,7 +16,8 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-$kodawarimedia-light-white: #f0fff0;
+$kodawarimedia-light-white: white;
+$kodawarimedia-off-green-white: #f0fff0;
 $kodawarimedia-dark-white: #808080;
 $kodawarimedia-black: #051517;
 $kodawarimedia-red: #9d0000;
@@ -30,39 +31,38 @@ body {
   background-color: $kodawarimedia-light-white;
 }
 
-// header
-
-.navbar-extend {
-  margin-bottom: 0;
-  background-color: $kodawarimedia-green;
-  opacity: 0.6;
-  ul li a button {
-    padding: 0.375rem 1.5rem;
-  }
-}
-
-.logo-img:hover {
-  opacity: 0.6;
-}
-
-.logo-text {
-  padding-top: 2px;
-  :hover {
-    opacity: 0.6;
-  }
-}
-
+// <--header-->
 // max-width = 768px
 @media (max-width: 768px) {
   .nav-item-extend {
     margin-top: 0.6rem;
   }
 }
-// <--header_title_logo-->
+// <--header_siteLogo-->
+.navbarTop {
+  width: auto;
+  margin-right: 16px;
+  margin-left: 16px;
+}
+.navbarTop_nav {
+  display: flex;
+  box-align: center;
+  align-items: center;
+}
 
-// <--header_sub_menu-->
+.navbarTop_nav button {
+  padding: 0;
+  margin-right: 0;
+  margin-left: 16px;
+  border-style: none;
+  background-color: $kodawarimedia-light-white;
+}
 
-// <--header_main_menu-->
+.navbarTop_nav button i {
+  font-size: 25px;
+}
+// <--header_navbarTop_sub-->
+// <--header_navbarTop_menu-->
 .nav ul {
   display: table;
   margin: 0 auto;
@@ -79,7 +79,7 @@ body {
   display: block;
   width: 100%;
   text-decoration: none;
-  color: $kodawarimedia-green;
+  color: $kodawarimedia-black;
   padding-bottom: 5px;
 }
 .nav li.current {
@@ -89,6 +89,7 @@ body {
   color: $kodawarimedia-blue;
   border-bottom: 3px solid $kodawarimedia-green;
 }
+
 
 // <--container_columns-->
 @media screen and (max-width: 480px) {
@@ -116,7 +117,6 @@ body {
   padding: 0;
   li {
     padding: 10px 10px;
-    border-top: 1px solid $kodawarimedia-black;
   }
   .micropost-user {
     margin-top: 5rem;
