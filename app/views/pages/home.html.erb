@@ -4,9 +4,10 @@
     <% if logged_in? %>
       <div class="container_columns">
         <div class="row">
-          <div class="container_body col-md-8">
-            <%= render 'shared/feed' %>
-          </div>
+
+          <%# <div class="container_body col-md-8">
+              <%= render 'shared/feed' %>
+
           <aside class="container_sub col-md-4">
             <div class="user_info pc_only">
               <%= render 'shared/user_info' %>

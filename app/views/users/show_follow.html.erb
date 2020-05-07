@@ -14,9 +14,7 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
-        <%= @users.each do |user| %>
-          <li><%= link_to user.name, user_path(user) %></li>
-        <% end %>
+      <%= render 'layouts/card_user' %>
       </ul>
     <% else %>
       <li>no user</li>

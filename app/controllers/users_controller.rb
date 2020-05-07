@@ -1,15 +1,18 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:edit, :update, :destroy, :following, :followers]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :set_user, only: [:show, :edit, :update, :destroy ]
+  before_action :logged_in_user, only: %i[edit update destroy following followers]
+  before_action :correct_user, only: %i[edit update]
+  before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @users = User.all
+    @user = User.find(params[:id])
+    @users = User.all.page(params[:page]).per(20)
+    @micropost = curren_user.microposts.build
   end
 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page]).per(10)
+    @micropost = current_user.microposts.build
   end
 
   def new
@@ -51,14 +54,16 @@ class UsersController < ApplicationController
   def following
     @title = "Following"
     @user  = User.find(params[:id])
-    @users = @user.following.page(params[:page])
+    @users = @user.following.page(params[:page]).per(20)
+    @micropost = current_user.microposts.build
     render 'show_follow'
   end
 
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])
-    @users = @user.followers.page(params[:page])
+    @users = @user.followers.page(params[:page]).per(20)
+    @micropost = current_user.microposts.build
     render 'show_follow'
   end
 
