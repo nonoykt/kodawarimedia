@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   resources :password_resets, only: [:new, :create, :edit, :update]
   resources :microposts
   resources :relationships, only: [:create, :destroy]
+  post 'likes/:micropost_id/create', to: 'likes#create', constraints: { micropost_id: /\d+/ }, as: :likes_create
+  post 'likes/:micropost_id/destroy', to: 'likes#destroy', constraints: { micropost_id: /\d+/ }, as: :likes_destroy
 end

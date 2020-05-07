@@ -9,8 +9,7 @@
     <h5 class="card-title">sample title</h5>
     <p class="micropost-user"><%= link_to micropost.user.name, micropost.user %></p>
     <p class="micropost-content"><%= micropost.content %></p>
-    <p class="micropost-timestamp">
-      <%= time_ago_in_words(micropost.created_at) %>
-    </p>
+    <p class="micropost-timestamp"><%= time_ago_in_words(micropost.created_at) %></p>
+    <p class="button_<%= @micropost.id %>"><%= render partial: 'likes/like' %></p>
   </div>
 </div>

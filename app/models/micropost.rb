@@ -1,4 +1,5 @@
 class Micropost < ApplicationRecord
+  has_many :likes, dependent: :destroy
   belongs_to :user
   has_one_attached :picture
   default_scope { order(created_at: :desc) }

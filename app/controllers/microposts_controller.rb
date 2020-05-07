@@ -40,7 +40,7 @@ class MicropostsController < ApplicationController
       flash[:success] = "編集が完了しました"
       redirect_to current_user
     else
-      render :edit # render 'micropost/edit'
+      render :edit
     end
   end
 

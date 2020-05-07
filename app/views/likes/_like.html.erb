@@ -1,0 +1,10 @@
+<div class="like_button_on">
+  <%= link_to likes_destroy_path(micropost_id: @micropost.id), {method: "post", remote: true} %>
+  <%= image_tag 'kodawarimedia-1.jpeg' %>
+  <%= @like_count %>
+</div>
+<div class="like_button">
+  <%= link_to likes_create_path(micropost_id: @micropost.id), {method: "post", remote: true} %>
+  <%= image_tag 'edit.jpeg' %>
+  <%= @like_count %>
+</div>
