@@ -21,7 +21,7 @@
         <div class="container">
           <ol class="microposts">
             <%= @microposts.each do |micropost| %>
-              <%= render @microposts %>
+              <%= render 'shared/card_micropost' %>
             <% end %>
           </ol>
         </div>

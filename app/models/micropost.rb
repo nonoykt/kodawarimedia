@@ -1,5 +1,6 @@
 class Micropost < ApplicationRecord
-  has_many :likes, dependent: :destroy
+  has_many :likes, class_name: 'Like', foreign_key: 'micropost_id', dependent: :destroy
+  has_many :likes_user, through: :likes, source: :user
   belongs_to :user
   has_one_attached :picture
   default_scope { order(created_at: :desc) }

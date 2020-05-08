@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'pages#home'
+  root to: 'microposts#index'
   get '/', to: 'pages#home'
   get '/help', to: 'pages#help'
   get '/about', to: 'pages#about'
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/signup', to: 'users#new'
   post '/signup', to: 'users#create'
+  get 'timeline', to: 'microposts#timeline'
   resources :users do
     member do
       get :following, :followers

@@ -14,7 +14,7 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
-      <%= render 'layouts/card_user' %>
+      <%= render 'shared/card_user' %>
       </ul>
     <% else %>
       <li>no user</li>

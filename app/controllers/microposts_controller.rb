@@ -6,6 +6,15 @@ class MicropostsController < ApplicationController
     @microposts = Micropost.all.page(params[:page]).per(10)
   end
 
+  def timeline
+    if logged_in?
+      @micropost  = current_user.microposts.build
+      @feed_items = current_user.feed.page(params[:page]).per(10)
+    else
+      @microposts = Micropost.all
+    end
+  end
+
   def show
     @user = User.find(Micropost.find(params[:id]).user_id)
     @micropost = Micropost.find(params[:id])
@@ -52,7 +61,7 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     flash[:success] = "ポストが削除されました"
-    redirect_to request.refferer || root_url
+    redirect_to request.refferer || microposts_url
   end
 
   private

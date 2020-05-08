@@ -1,0 +1,13 @@
+<% if @users == nil && @feed_items == nil %>
+  <div class="wrapper_pagenate top">
+    <%= paginate @microposts %>
+  </div>
+<% elsif @users == nil %>
+  <div class="wrapper_pagenate top">
+    <%= paginate @feed_items %>
+  </div>
+<% else %>
+  <div class="wrapper_pagenate top">
+    <%= paginate @users %>
+  </div>
+<% end %>

@@ -1,10 +1,22 @@
-<div class="like_button_on">
-  <%= link_to likes_destroy_path(micropost_id: @micropost.id), {method: "post", remote: true} %>
-  <%= image_tag 'kodawarimedia-1.jpeg' %>
-  <%= @like_count %>
-</div>
-<div class="like_button">
-  <%= link_to likes_create_path(micropost_id: @micropost.id), {method: "post", remote: true} %>
-  <%= image_tag 'edit.jpeg' %>
-  <%= @like_count %>
-</div>
+<% if logged_in? %>
+  <% if current_user.like?(micropost) %>
+    <div class="like_button_on">
+      <%= link_to likes_destroy_path(micropost_id: micropost.id), {method: "post", remote: true} do %>
+        <%= image_tag 'kodawarimedia-1.jpeg', alt: イイネ %>
+      <% end %>
+    </div>
+    <span class="likes_count"><%= @like_count %>likes</span>
+  <% else %>
+    <div class="like_button">
+      <%= link_to likes_create_path(micropost_id: micropost.id), {method: "post", remote: true} do %>
+        <%= image_tag 'edit.jpeg', alt: イイネ %>
+      <% end %>
+    </div>
+    <span class="likes_count"><%= @like_count %>likes</span>
+  <% end %>
+<% else %>
+  <%= like_to new_user_session_path, method: :get do %>
+    <%= image_tag 'default.jpeg', alt: イイネ %>
+  <% end %>
+  <span class="likes_count"><%= @like_count %>likes</span>
+<% end %>

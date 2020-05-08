@@ -3,7 +3,7 @@ class CreateMicroposts < ActiveRecord::Migration[5.2]
     create_table :microposts do |t|
       t.integer :time
       t.text :content
-      t.string :picture
+      t.string :image
       t.references :user, foreign_key: true
 
       t.timestamps

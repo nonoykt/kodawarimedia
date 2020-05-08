@@ -4,15 +4,12 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
 
   def index
-    @user = User.find(params[:id])
     @users = User.all.page(params[:page]).per(20)
-    @micropost = curren_user.microposts.build
   end
 
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page]).per(10)
-    @micropost = current_user.microposts.build
   end
 
   def new
@@ -36,11 +33,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(user_params)
-      # success
       flash[:success] = "プロフィールの更新に成功しました"
       redirect_to @user
     else
-      # failure
       flash.now[:danger] = "プロフィールの編集に失敗しました"
       render :edit
     end

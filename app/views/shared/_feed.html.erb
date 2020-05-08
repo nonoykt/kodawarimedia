@@ -1,5 +1,47 @@
 <% if @feed_items.any? %>
-  <ol class="microposts">
-    <%= render @feed_items %>
-  </ol>
+  <div class="feed_items">
+    <%= @feed_items.each do |feed_items| %>
+      <% user = User.find(feed_items.user_id) %>
+      <div class="card_post">
+        <div class="navUserLogo">
+          <%= link_to user_path(id: user.id), method: :get do %>
+            <%# <%= image_tag User.find(micropost.user_id).image.url, alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+          <span class="User_name_nav">
+            <%= link_to user_path(id: user.id), method: :get do %>
+              <%= User.find(feed_items.user_id).name %>
+            <% end %>
+          </span>
+        </div>
+        <p class="feed_content_nav">
+          <%= link_to micropost_path(id: feed_items.id), method: :get do %>
+            <%= feed_items.content %>
+          <% end %>
+        </p>
+        <% unless feed_items.image == '/images/default.jpeg' %>
+          <div class="image_micropost">
+            <%= link_to micropost_path(id: feed_items.id), method: :get do %>
+              <%# <%= image_tag micropost.image, alt: '投稿写真', class: '' %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="actions-items">
+          <span class="action" id="like_action-<%= feed_items.id %>">
+            <%= render 'likes/like', locals: {feed_items: @feed_items} %>
+          </span>
+          <span class="action">
+            <%= image_tag 'default.jpeg', alt: 時間 %>
+            <span><%= time_ago_in_words(feed_items.created_at) %>前</span>
+          </span>
+          <span class="action">
+            <%= link_to micropost_path(id: feed_items.id, method: :delete,
+              data: {confirm: "投稿を削除してもよろしいでしょうか？"}) do %>
+              <%= image_tag 'default.jpeg', alt: 消去 %>
+            <% end %>
+          </span>
+        </div>
+
+      </div>
+    <% end %>
+  </div>
 <% end %>

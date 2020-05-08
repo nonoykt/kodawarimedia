@@ -1,8 +1,8 @@
-<% provide(:title, "ホーム")%>
+<% provide(:title, "タイムライン")%>
 <div class="container">
   <div class="container_main">
     <%= render 'layouts/pagenate_top' %>
-    <%= render 'shared/card_micropost' %>
+    <%= render 'shared/feed' %>
     <%= render 'layouts/pagenate_bottom' %>
   </div>
   <% if logged_in? %>

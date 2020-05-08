@@ -1,0 +1,26 @@
+<% if @users.length == 0 %>
+  <div class="card_post">対象となるユーザーがまだおりません</div>
+<% else %>
+  <% @users.each do |user| %>
+    <div class="card_post">
+      <div class="navUserLogo">
+        <% unless user.image == '/images/default.jpeg' %>
+          <%= link_to user_path(id: user.id), method: :get do %>
+            <%= image_tag '/images/default.jpeg', alt: 'ユーザーのアイコン', class: 'image_user' %>
+          <% end %>
+        <% end %>
+      </div>
+      <span class="User_name_nav">
+        <%= link_to user_path(id: user.id), method: :get do %>
+          <%= user.name %>
+        <% end %>
+      </span>
+      <span class="stats">
+        <%= render 'shared/stats'%>
+      </span>
+      <span class="col-md-8">
+        <%= render 'follow_form' if logged_in? %>
+      </span>
+    </div>
+  <% end %>
+<% end %>
